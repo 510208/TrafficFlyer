@@ -18,14 +18,14 @@ Begin VB.Form Main
       ForeColor       =   &H80000008&
       Height          =   1575
       Left            =   120
-      TabIndex        =   7
+      TabIndex        =   3
       Top             =   3720
       Width           =   5535
       Begin VB.TextBox main_waitsec 
          Appearance      =   0  '平面
          Height          =   270
          Left            =   1320
-         TabIndex        =   15
+         TabIndex        =   11
          Top             =   840
          Width           =   1335
       End
@@ -34,7 +34,7 @@ Begin VB.Form Main
          Caption         =   "+"
          Height          =   255
          Left            =   3000
-         TabIndex        =   14
+         TabIndex        =   10
          Top             =   840
          Width           =   255
       End
@@ -43,7 +43,7 @@ Begin VB.Form Main
          Caption         =   "-"
          Height          =   255
          Left            =   3360
-         TabIndex        =   13
+         TabIndex        =   9
          Top             =   840
          Width           =   255
       End
@@ -52,7 +52,7 @@ Begin VB.Form Main
          Caption         =   "-"
          Height          =   255
          Left            =   2760
-         TabIndex        =   11
+         TabIndex        =   7
          Top             =   240
          Width           =   255
       End
@@ -61,7 +61,7 @@ Begin VB.Form Main
          Caption         =   "+"
          Height          =   255
          Left            =   2400
-         TabIndex        =   10
+         TabIndex        =   6
          Top             =   240
          Width           =   255
       End
@@ -69,7 +69,7 @@ Begin VB.Form Main
          Appearance      =   0  '平面
          Height          =   270
          Left            =   960
-         TabIndex        =   9
+         TabIndex        =   5
          Top             =   240
          Width           =   1335
       End
@@ -80,7 +80,7 @@ Begin VB.Form Main
          ForeColor       =   &H80000008&
          Height          =   255
          Left            =   2760
-         TabIndex        =   17
+         TabIndex        =   13
          Top             =   840
          Width           =   255
       End
@@ -91,7 +91,7 @@ Begin VB.Form Main
          ForeColor       =   &H80000008&
          Height          =   255
          Left            =   120
-         TabIndex        =   16
+         TabIndex        =   12
          Top             =   840
          Width           =   1215
       End
@@ -102,7 +102,7 @@ Begin VB.Form Main
          ForeColor       =   &H000000FF&
          Height          =   615
          Left            =   3120
-         TabIndex        =   12
+         TabIndex        =   8
          Top             =   240
          Width           =   2295
       End
@@ -113,7 +113,7 @@ Begin VB.Form Main
          ForeColor       =   &H80000008&
          Height          =   255
          Left            =   120
-         TabIndex        =   8
+         TabIndex        =   4
          Top             =   240
          Width           =   855
       End
@@ -128,43 +128,6 @@ Begin VB.Form Main
       TabIndex        =   0
       Top             =   2040
       Width           =   5535
-      Begin VB.CommandButton main_clearLIST 
-         Appearance      =   0  '平面
-         Caption         =   "全部刪除(&C)"
-         Height          =   255
-         Left            =   4200
-         TabIndex        =   6
-         Top             =   720
-         Width           =   1215
-      End
-      Begin VB.CommandButton main_delthis 
-         Appearance      =   0  '平面
-         Caption         =   "刪除此項(&D)"
-         Height          =   255
-         Left            =   4200
-         TabIndex        =   5
-         Top             =   1080
-         Width           =   1215
-      End
-      Begin VB.ListBox main_urls 
-         Appearance      =   0  '平面
-         Height          =   750
-         ItemData        =   "Main.frx":0000
-         Left            =   960
-         List            =   "Main.frx":0007
-         TabIndex        =   4
-         Top             =   600
-         Width           =   3135
-      End
-      Begin VB.CommandButton main_add 
-         Appearance      =   0  '平面
-         Caption         =   "添加(&A)"
-         Height          =   255
-         Left            =   3240
-         TabIndex        =   3
-         Top             =   240
-         Width           =   975
-      End
       Begin VB.TextBox main_url 
          Appearance      =   0  '平面
          Height          =   270
@@ -190,7 +153,7 @@ Begin VB.Form Main
       Appearance      =   0  '平面
       Height          =   1920
       Left            =   0
-      Picture         =   "Main.frx":0016
+      Picture         =   "Main.frx":0000
       Top             =   0
       Width           =   5760
    End
@@ -200,10 +163,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim turnmax As Boolean
-
 Private Sub Command3_Click()
-    main_waitsec.Text = Val(main_waitsec.Text) - 1
+    If Val(main_waitsec.Text) >= 1 Then
+        main_waitsec.Text = Val(main_waitsec.Text) - 1
+    End If
 End Sub
 
 Private Sub Command4_Click()
@@ -224,9 +187,8 @@ End Sub
 
 Private Sub Form_Load()
     turnmax = False
-    main_urls.Clear
-    main_turn.Text = 0
     main_waitsec.Text = 0
+    main_turn = 0
 End Sub
 
 
@@ -244,7 +206,9 @@ Private Sub main_turnadd_Click()
 End Sub
 
 Private Sub main_turnmin_Click()
-    main_turn.Text = Val(main_turn.Text) - 1
+    If Val(mainturn.Text) >= 1 Then
+        main_turn.Text = Val(main_turn.Text) - 1
+    End If
 End Sub
 
 Private Sub main_url_KeyDown(KeyCode As Integer, Shift As Integer)
