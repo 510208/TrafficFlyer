@@ -3,44 +3,14 @@ Begin VB.Form Main
    Appearance      =   0  '平面
    BackColor       =   &H80000005&
    Caption         =   "TrafficFlyer"
-   ClientHeight    =   6210
+   ClientHeight    =   5445
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   5730
    LinkTopic       =   "Form1"
-   ScaleHeight     =   6210
+   ScaleHeight     =   5445
    ScaleWidth      =   5730
    StartUpPosition =   3  '系統預設值
-   Begin VB.Frame Frame3 
-      Appearance      =   0  '平面
-      BackColor       =   &H80000005&
-      Caption         =   "'動作"
-      ForeColor       =   &H80000008&
-      Height          =   735
-      Left            =   2400
-      TabIndex        =   18
-      Top             =   5400
-      Width           =   3135
-      Begin VB.CommandButton Command2 
-         Appearance      =   0  '平面
-         Cancel          =   -1  'True
-         Caption         =   "離開(&E)"
-         Height          =   375
-         Left            =   120
-         TabIndex        =   20
-         Top             =   240
-         Width           =   1335
-      End
-      Begin VB.CommandButton Command1 
-         Appearance      =   0  '平面
-         Caption         =   "開始(&S)"
-         Height          =   375
-         Left            =   1560
-         TabIndex        =   19
-         Top             =   240
-         Width           =   1455
-      End
-   End
    Begin VB.Frame Frame2 
       Appearance      =   0  '平面
       BackColor       =   &H80000005&
@@ -231,15 +201,6 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim turnmax As Boolean
-
-Private Sub Command1_Click()
-    Form1.Show
-    Main.Hide
-End Sub
-
-Private Sub Command2_Click()
-    End
-End Sub
 
 Private Sub Command3_Click()
     main_waitsec.Text = Val(main_waitsec.Text) - 1
